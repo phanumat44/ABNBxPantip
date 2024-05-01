@@ -1,0 +1,72 @@
+
+
+{
+  "RootLayout": {
+    "home_link": "หน้าหลัก",
+    "about_link": "เกี่ยวกับ",
+    "guestbook_link": "สมุดเยี่ยม",
+    "portfolio_link": "ผลงาน",
+    "sign_in_link": "เข้าสู่ระบบ",
+    "sign_up_link": "ลงชื่อ"
+  },
+  "BaseTemplate": {
+    "description": "โค้ดเริ่มต้นสำหรับ Nextjs Boilerplate ด้วย Tailwind CSS",
+    "made_with": "ทำด้วย"
+  },
+  "Index": {
+    "meta_title": "Next.js การนำเสนอบอยเลอร์เพลท",
+    "meta_description": "Next js Boilerplate เป็นโค้ดเริ่มต้นที่สมบูรณ์แบบสำหรับโปรเจ็กต์ของคุณ "
+  },
+  "Guestbook": {
+    "meta_title": "สมุดเยี่ยม",
+    "meta_description": "ตัวอย่างการดำเนินการ CRUD",
+    "database_powered_by": "ฐานข้อมูลขับเคลื่อนโดย",
+    "loading_guestbook": "กำลังโหลดสมุดเยี่ยม..."
+  },
+  "GuestbookForm": {
+    "username": "ชื่อผู้ใช้",
+    "body": "ร่างกาย",
+    "save": "บันทึก"
+  },
+  "About": {
+    "meta_title": "เกี่ยวกับ",
+    "meta_description": "เกี่ยวกับคำอธิบายหน้า",
+    "about_paragraph": "ยินดีต้อนรับสู่หน้าเกี่ยวกับของเรา! ",
+    "translation_powered_by": "แปลขับเคลื่อนโดย"
+  },
+  "Portfolio": {
+    "meta_title": "ผลงาน",
+    "meta_description": "ยินดีต้อนรับสู่หน้าผลงานของฉัน!",
+    "presentation": "ยินดีต้อนรับสู่หน้าผลงานของฉัน! ",
+    "portfolio_name": "ผลงาน {ชื่อ}",
+    "log_management_powered_by": "การจัดการบันทึกขับเคลื่อนโดย"
+  },
+  "PortfolioSlug": {
+    "meta_title": "ผลงาน {บุ้ง}",
+    "meta_description": "คำอธิบายพอร์ตโฟลิโอ {slug}",
+    "header": "ผลงาน {บุ้ง}",
+    "content": "สร้างชุดสื่อส่งเสริมการขายและองค์ประกอบการสร้างแบรนด์สำหรับกิจกรรมขององค์กร ",
+    "error_reporting_powered_by": "การรายงานข้อผิดพลาดที่ขับเคลื่อนโดย",
+    "coverage_powered_by": "ความครอบคลุมของรหัสขับเคลื่อนโดย"
+  },
+  "SignIn": {
+    "meta_title": "เข้าสู่ระบบ",
+    "meta_description": "ลงชื่อเข้าใช้บัญชีของคุณได้อย่างราบรื่นด้วยกระบวนการเข้าสู่ระบบที่ใช้งานง่ายของเรา"
+  },
+  "SignUp": {
+    "meta_title": "ลงชื่อ",
+    "meta_description": "สร้างบัญชีได้อย่างง่ายดายผ่านขั้นตอนการลงทะเบียนที่ใช้งานง่ายของเรา"
+  },
+  "Dashboard": {
+    "meta_title": "แผงควบคุม",
+    "hello_message": "สวัสดี {อีเมล}!"
+  },
+  "UserProfile": {
+    "meta_title": "ประวัติผู้ใช้"
+  },
+  "DashboardLayout": {
+    "dashboard_link": "แผงควบคุม",
+    "user_profile_link": "จัดการบัญชีของคุณ",
+    "sign_out": "ออกจากระบบ"
+  }
+}

@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* poppins.css */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+  /* Optionally, you can add more font weights and styles using additional @font-face rules */
+}
+
+/* Example usage of the font */
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+
+input[type="text"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: 0px solid #ccc;
+    border-radius: 0px;
+  
+    outline: none;
+}
