@@ -18,7 +18,7 @@ const BaseTemplate = (props: {
   rightNav?: React.ReactNode;
   children: React.ReactNode;
 }) => {
-  const t = useTranslations('BaseTemplate');
+  
 
  function NextArrow(props: { className: any; style: any; onClick: any }) {
    const { className, style, onClick } = props;
