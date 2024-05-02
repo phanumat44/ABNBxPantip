@@ -230,7 +230,7 @@ export default function Index() {
                 return (
                   <div
                     key={item.topic_id}
-                    className="overflow-hidden rounded-xl bg-white text-gray-800 shadow-md transition duration-300 ease-in-out hover:scale-105"
+                    className="overflow-hidden cursor-pointer rounded-xl bg-white text-gray-800 shadow-md transition duration-300 ease-in-out hover:scale-105"
                   >
                     <div className="relative">
                       <img
