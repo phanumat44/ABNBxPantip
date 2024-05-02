@@ -335,7 +335,7 @@ type Catlist = {
                           <div key={item.id} className="p-2 ">
                             <div className="w-18 h-18 flex cursor-pointer flex-col items-center justify-center rounded-xl border border-gray-500 p-1 shadow-md transition-all duration-300 hover:scale-110">
                               <div
-                                className={`   transition duration-300 ease-in-out m-auto flex  ${scrolled ? "size-12" : "size-11"} items-center justify-center rounded-xl`}
+                                className={` hidden lg:flex duration-300 ease-in-out m-auto   ${scrolled ? "size-12" : "size-11"} items-center justify-center rounded-xl`}
                               >
                                 <IoNewspaperOutline
                                   size={scrolled ? 25 : 20}
