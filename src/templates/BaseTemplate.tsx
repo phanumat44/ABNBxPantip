@@ -332,10 +332,10 @@ type Catlist = {
                         return (
                           <div key={item.id} className='p-2 '>
                             <div className='w-18 h-18 flex cursor-pointer flex-col items-center justify-center rounded-xl border border-gray-500 p-1 shadow-md transition-all duration-300 hover:scale-110'>
-                              <div className=' m-auto flex size-12 items-center justify-center rounded-xl'>
+                              {scrolled &&
+                                <div className=' m-auto flex size-12 items-center justify-center rounded-xl'>
                                 <IoNewspaperOutline size={25} color='#000' />
-                                {/* <img className='w-full h-full' src='https://picsum.photos/200' alt='' /> */}
-                              </div>
+                              </div>}
                               <div className='p-1 '>
                                 <p className='truncate text-center text-xs text-gray-900 '>
                                   {item.name}

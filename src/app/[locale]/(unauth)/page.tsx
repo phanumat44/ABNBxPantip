@@ -3,6 +3,7 @@
 /* eslint-disable */
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { BiSolidCommentDetail } from "react-icons/bi";
 
 import { useEffect, useState } from "react";
 import { IoEye } from "react-icons/io5";
@@ -248,18 +249,23 @@ export default function Index() {
                       </div>
                     </div>
                     <div className="flex flex-col justify-around p-4  ">
-                      <div className="mb-2 text-lg min-h-[109px] font-medium text-gray-800">
+                      <div className="mb-2 text-lg min-h-[109px] font-medium text-gray-800 line-clamp-3">
                         {item.title}
                       </div>
-                      <div className="avatar bottom-0  flex  items-center justify-start gap-3">
-                        <img
-                          className="size-6 rounded-full"
-                          src={item.author.avatar.medium}
-                        />
-                        <span className="  text-sm  line-clamp-1">
-                          {" "}
-                          {item.author.name}
-                        </span>
+                      <div className="flex flex-row justify-between items-center">
+                        <div className="avatar bottom-0  flex  items-center justify-start gap-3">
+                          <img
+                            className="size-6 rounded-full"
+                            src={item.author.avatar.medium}
+                          />
+                          <span className="  text-sm  line-clamp-1">
+                            {item.author.name}
+                          </span>
+                        </div>
+                        <div className="comment flex text-sm items-center justify-center gap-1">
+                          <BiSolidCommentDetail />
+                          <span className="text-sm">{item.comments_count}</span>
+                        </div>
                       </div>
                     </div>
                   </div>
