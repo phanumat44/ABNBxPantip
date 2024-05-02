@@ -142,8 +142,26 @@ type Catlist = {
     }, [window.scrollY]);
 
     return isTop;
+  } 
+  
+  function isScrolledL2(): boolean {
+    // Initial state: at the top
+    const [isTop, setIsTop] = useState(true);
+    useEffect(() => {
+      const handleScroll = () => {
+        setIsTop(window.scrollY > 30); // Update state based on scroll position
+      };
+
+      window.addEventListener('scroll', handleScroll);
+
+      // Cleanup function to prevent memory leaks
+      return () => window.removeEventListener('scroll', handleScroll);
+    }, [window.scrollY]);
+
+    return isTop;
   }
   const scrolled = isScrolled();
+  const scrolledL2 = isScrolledL2();
 
   const [activeTab, setActiveTab] = useState('home');
 
@@ -330,14 +348,19 @@ type Catlist = {
                     {catList &&
                       catList.map((item) => {
                         return (
-                          <div key={item.id} className='p-2 '>
-                            <div className='w-18 h-18 flex cursor-pointer flex-col items-center justify-center rounded-xl border border-gray-500 p-1 shadow-md transition-all duration-300 hover:scale-110'>
-                              {scrolled &&
-                                <div className=' m-auto flex size-12 items-center justify-center rounded-xl'>
-                                <IoNewspaperOutline size={25} color='#000' />
-                              </div>}
-                              <div className='p-1 '>
-                                <p className='truncate text-center text-xs text-gray-900 '>
+                          <div key={item.id} className="p-2 ">
+                            <div className="w-18 h-18 flex cursor-pointer flex-col items-center justify-center rounded-xl border border-gray-500 p-1 shadow-md transition-all duration-300 hover:scale-110">
+                              <div
+                                className={`   transition duration-300 ease-in-out m-auto flex  ${scrolled ? "size-12" : "size-11"} items-center justify-center rounded-xl`}
+                              >
+                                <IoNewspaperOutline
+                                  size={scrolled ? 25 : 20}
+                                  color="#000"
+                                />
+                              </div>
+
+                              <div className="p-1 ">
+                                <p className="truncate text-center text-xs text-gray-900 ">
                                   {item.name}
                                 </p>
                               </div>
