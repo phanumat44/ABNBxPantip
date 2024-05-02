@@ -143,25 +143,9 @@ type Catlist = {
 
     return isTop;
   } 
-  
-  function isScrolledL2(): boolean {
-    // Initial state: at the top
-    const [isTop, setIsTop] = useState(true);
-    useEffect(() => {
-      const handleScroll = () => {
-        setIsTop(window.scrollY > 30); // Update state based on scroll position
-      };
 
-      window.addEventListener('scroll', handleScroll);
-
-      // Cleanup function to prevent memory leaks
-      return () => window.removeEventListener('scroll', handleScroll);
-    }, [window.scrollY]);
-
-    return isTop;
-  }
   const scrolled = isScrolled();
-  const scrolledL2 = isScrolledL2();
+  
 
   const [activeTab, setActiveTab] = useState('home');
 
