@@ -100,10 +100,6 @@ type Highlight = {
     ],
   };
 
-  useEffect(() => {
-    fethData();
-    fetchDataTopic();
-  }, []);
 
   const fethData = async () => {
     try {
@@ -139,7 +135,7 @@ type Highlight = {
         throw new Error(data.message);
       }
       setHighlight(data.data);
-      console.log("highlight")
+      console.log('highlight');
       console.log(data.data);
     } catch (error) {
       console.log(error);
@@ -185,10 +181,16 @@ type Highlight = {
     } catch (error) {
       console.log(error);
     }
+
+      useEffect(() => {
+        fethData();
+        fetchDataTopic();
+      }, []);
+
   };
   return (
     <div className="mx-auto max-w-[1700px]">
-      <section id="highlight " className="border-b border-gray-200">
+      <section id="highlight" className="border-b border-gray-200">
         <div className="container mx-auto">
           <div className="title">
             <h2 className="py-3 text-gray-900">Highlight</h2>
@@ -196,9 +198,9 @@ type Highlight = {
           <div className="slider mx-auto">
             <Slider {...settings}>
               {highlight &&
-                highlight.map((item, index) => {
+                highlight.map((item) => {
                   return (
-                    <div className="px-2" key={index}>
+                    <div className="px-2" key={item.name}>
                       <div className="p-2 ">
                         <div className="flex cursor-pointer flex-col items-center justify-center transition-all duration-300 hover:scale-110">
                           <img
