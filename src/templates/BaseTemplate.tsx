@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 
 import axios from 'axios';
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
+// import { useTranslations } from 'next-intl';
 import React, { useEffect, useState } from 'react';
 import { BsPersonCircle } from 'react-icons/bs';
 import { FiMenu, FiPlusCircle } from 'react-icons/fi';
@@ -18,7 +18,7 @@ const BaseTemplate = (props: {
   rightNav?: React.ReactNode;
   children: React.ReactNode;
 }) => {
-  
+  // const t = useTranslations('BaseTemplate');
 
  function NextArrow(props: { className: any; style: any; onClick: any }) {
    const { className, style, onClick } = props;
