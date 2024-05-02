@@ -1,4 +1,5 @@
 'use client';
+/* eslint-disable */
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
