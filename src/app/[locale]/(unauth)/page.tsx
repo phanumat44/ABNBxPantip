@@ -234,7 +234,10 @@ export default function Index() {
                     <div className="relative">
                       <img
                         className="h-48 w-full object-cover"
-                        src={item.thumbnail_url}
+                        src={
+                          item.thumbnail_url ||
+                          "https://f.ptcdn.info/506/082/000/s4yvpq1q38tZ1z3AMmb70-o.jpg"
+                        }
                       />
                       <div className="absolute right-0 top-0 m-2 flex items-center  justify-center gap-2 rounded-md bg-slate-700/60 p-1 text-sm text-white">
                         <IoEye />
@@ -245,15 +248,18 @@ export default function Index() {
                       </div>
                     </div>
                     <div className="flex flex-col justify-around p-4  ">
-                      <div className="mb-2 text-lg font-medium text-gray-800">
+                      <div className="mb-2 text-lg min-h-[109px] font-medium text-gray-800">
                         {item.title}
                       </div>
-                      <div className="avatar flex  items-center justify-start gap-3">
+                      <div className="avatar bottom-0  flex  items-center justify-start gap-3">
                         <img
-                          className="size-8 rounded-full"
+                          className="size-6 rounded-full"
                           src={item.author.avatar.medium}
                         />
-                        <span> {item.author.name}</span>
+                        <span className="  text-sm  line-clamp-1">
+                          {" "}
+                          {item.author.name}
+                        </span>
                       </div>
                     </div>
                   </div>
