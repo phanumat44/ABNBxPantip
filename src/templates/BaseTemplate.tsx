@@ -20,79 +20,87 @@ const BaseTemplate = (props: {
 }) => {
   const t = useTranslations('BaseTemplate');
 
-  function NextArrow(props: { className: any; style: any; onClick: any }) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{
-          ...style,
-          display: 'block',
-          borderRadius: '100%',
-          boxShadow: '0 0 2px 2px rgba(0,0,0,0.3)',
-          backgroundColor: 'rgba(0,0,0,0.1)',
-        }}
-        onClick={onClick}
-      />
-    );
-  }
+ function NextArrow(props: { className: any; style: any; onClick: any }) {
+   const { className, style, onClick } = props;
+   return (
+     <div
+       className={className}
+       style={{
+         ...style,
+         display: "block",
+         borderRadius: "100%",
+         boxShadow: "0 0 2px 2px rgba(0,0,0,0.3)",
+         backgroundColor: "rgba(0,0,0,0.1)",
+       }}
+       onClick={onClick}
+     />
+   );
+ }
 
-  function PrevArrow(props: { className: any; style: any; onClick: any }) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{
-          ...style,
-          display: 'block',
-          borderRadius: '100%',
-          boxShadow: '0 0 2px 2px rgba(0,0,0,0.3)',
-          backgroundColor: 'rgba(0,0,0,0.1)',
+ function PrevArrow(props: { className: any; style: any; onClick: any }) {
+   const { className, style, onClick } = props;
+   return (
+     <div
+       className={className}
+       style={{
+         ...style,
+         display: "block",
+         borderRadius: "100%",
+         boxShadow: "0 0 2px 2px rgba(0,0,0,0.3)",
+         backgroundColor: "rgba(0,0,0,0.1)",
+         zIndex: 9,
+       }}
+       onClick={onClick}
+     />
+   );
+ }
 
-          zIndex: 9,
-        }}
-        onClick={onClick}
-      />
-    );
-  }
+ const settings = {
+   dots: false,
+   arrows: true,
+   infinite: true,
+   speed: 500,
+   slidesToShow: 15,
+   slidesToScroll: 5,
+   autoplay: false,
+   autoplaySpeed: 1000,
+   nextArrow: <NextArrow className={undefined} style={undefined} onClick={undefined} />,
+   prevArrow: <PrevArrow className={undefined} style={undefined} onClick={undefined} />,
+   responsive: [
+     {
+       breakpoint: 1024,
+       settings: {
+         slidesToShow: 8,
+         slidesToScroll: 8,
+       },
+     },
+     {
+       breakpoint: 600,
+       settings: {
+         slidesToShow: 5,
+         slidesToScroll: 5,
+       },
+     },
+     {
+       breakpoint: 480,
+       settings: {
+         slidesToShow: 3,
+         slidesToScroll: 3,
+       },
+     },
+   ],
+ };
 
-  const settings = {
-    dots: false,
-    arrows: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 15,
-    slidesToScroll: 5,
-    autoplay: false,
-    autoplaySpeed: 1000,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 8,
-          slidesToScroll: 8,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 5,
-          slidesToScroll: 5,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-        },
-      },
-    ],
-  };
+type Catlist = {
+  id: number;
+  name: string;
+  name_en: string;
+  slug: string;
+  is_pinned: boolean;
+};
 
-  const [catList, setcatList] = useState();
+
+  const [catList, setcatList] = useState<Catlist[]>([]);
 
   async function fethdata() {
     try {
@@ -102,7 +110,9 @@ const BaseTemplate = (props: {
 
       // Handle success
       if (response.data.success) {
-        setcatList(response.data);
+        setcatList(response.data.data);
+        console.log("catList");
+        console.log(response.data.data);
       }
     } catch (error) {
       console.log(error);
@@ -166,7 +176,7 @@ const BaseTemplate = (props: {
         <header className="sticky top-0 z-50 px-1 lg:px-0">
           <nav className="mx-auto gap-4  border-b border-gray-200 bg-white px-4 py-3 pt-5 md:px-6">
             <div
-              className={`mx-auto flex  flex-wrap  items-center gap-3 lg:gap-0  ${scrolled ? ' lg:items-start ' : 'lg:items-center'} max-w-[1700px] justify-between `}
+              className={`mx-auto flex  flex-wrap  items-center gap-3 lg:gap-0  ${scrolled ? " lg:items-start " : "lg:items-center"} max-w-[1700px] justify-between `}
             >
               <a className="flex items-center">
                 <Image
@@ -184,7 +194,7 @@ const BaseTemplate = (props: {
                 </div>
                 {/* <Link href="/sign-in/">Sign In</Link> */}
                 <button
-                  onClick={() => setActiveTab('home')}
+                  onClick={() => setActiveTab("home")}
                   className={`mr-3 flex  items-center justify-center gap-2 rounded-full border px-3 py-2  pr-4 font-medium text-gray-700 hover:bg-gray-400/30 hover:text-gray-900  `}
                   aria-current="page"
                 >
@@ -238,14 +248,14 @@ const BaseTemplate = (props: {
               </div>
               <div className="flex w-[800px]  flex-col-reverse gap-4">
                 <div
-                  className={` hidden w-full items-center   justify-between self-center transition duration-300 lg:order-1 lg:block  lg:w-auto ${scrolled ? '' : 'lg:hidden'}`}
+                  className={` hidden w-full items-center   justify-between self-center transition duration-300 lg:order-1 lg:block  lg:w-auto ${scrolled ? "" : "lg:hidden"}`}
                   id="mobile-menu-2"
                 >
                   <ul className="mt-4 flex flex-col font-medium lg:mt-0 lg:flex-row lg:space-x-8">
                     <li>
                       <button
-                        onClick={() => setActiveTab('home')}
-                        className={`block border-b   py-2 pl-3 pr-4 ${activeTab == 'home' ? ' font-semibold text-black' : ' font-medium text-gray-600 hover:rounded-3xl hover:bg-gray-400/30 hover:text-gray-900'}  px-3 lg:border-0 `}
+                        onClick={() => setActiveTab("home")}
+                        className={`block border-b   py-2 pl-3 pr-4 ${activeTab == "home" ? " font-semibold text-black" : " font-medium text-gray-600 hover:rounded-3xl hover:bg-gray-400/30 hover:text-gray-900"}  px-3 lg:border-0 `}
                         aria-current="page"
                       >
                         Home
@@ -253,32 +263,32 @@ const BaseTemplate = (props: {
                     </li>
                     <li>
                       <button
-                        onClick={() => setActiveTab('feed')}
-                        className={`block border-b  py-2 pl-3 pr-4 ${activeTab == 'feed' ? ' font-semibold text-black' : ' font-medium text-gray-600 hover:rounded-3xl hover:bg-gray-400/30 hover:text-gray-900'}  px-3 lg:border-0 `}
+                        onClick={() => setActiveTab("feed")}
+                        className={`block border-b  py-2 pl-3 pr-4 ${activeTab == "feed" ? " font-semibold text-black" : " font-medium text-gray-600 hover:rounded-3xl hover:bg-gray-400/30 hover:text-gray-900"}  px-3 lg:border-0 `}
                       >
                         My Feeds
                       </button>
                     </li>
                     <li>
                       <button
-                        onClick={() => setActiveTab('pick')}
-                        className={`block border-b   py-2 pl-3 pr-4 ${activeTab == 'pick' ? ' font-semibold text-black' : ' font-medium text-gray-600 hover:rounded-3xl hover:bg-gray-400/30 hover:text-gray-900'}  px-3 lg:border-0 `}
+                        onClick={() => setActiveTab("pick")}
+                        className={`block border-b   py-2 pl-3 pr-4 ${activeTab == "pick" ? " font-semibold text-black" : " font-medium text-gray-600 hover:rounded-3xl hover:bg-gray-400/30 hover:text-gray-900"}  px-3 lg:border-0 `}
                       >
                         Pantip Pick
                       </button>
                     </li>
                     <li>
                       <button
-                        onClick={() => setActiveTab('hitz')}
-                        className={`block border-b     py-2 pl-3 pr-4 ${activeTab == 'hitz' ? ' font-semibold text-black' : ' font-medium text-gray-600 hover:rounded-3xl hover:bg-gray-400/30 hover:text-gray-900'}  px-3 lg:border-0 `}
+                        onClick={() => setActiveTab("hitz")}
+                        className={`block border-b     py-2 pl-3 pr-4 ${activeTab == "hitz" ? " font-semibold text-black" : " font-medium text-gray-600 hover:rounded-3xl hover:bg-gray-400/30 hover:text-gray-900"}  px-3 lg:border-0 `}
                       >
                         Pantip Hitz
                       </button>
                     </li>
                     <li>
                       <button
-                        onClick={() => setActiveTab('explore')}
-                        className={`block border-b     py-2 pl-3 pr-4 ${activeTab == 'explore' ? ' font-semibold text-black' : ' font-medium text-gray-600 hover:rounded-3xl hover:bg-gray-400/30 hover:text-gray-900'}  px-3 lg:border-0 `}
+                        onClick={() => setActiveTab("explore")}
+                        className={`block border-b     py-2 pl-3 pr-4 ${activeTab == "explore" ? " font-semibold text-black" : " font-medium text-gray-600 hover:rounded-3xl hover:bg-gray-400/30 hover:text-gray-900"}  px-3 lg:border-0 `}
                       >
                         Explore
                       </button>
@@ -287,13 +297,13 @@ const BaseTemplate = (props: {
                 </div>
                 <div>
                   <div
-                    className={`search-bar mx-auto flex max-w-[70%]  items-center  justify-center overflow-hidden rounded-full px-2 py-1 transition duration-300 ease-in-out  ${scrolled ? 'mb-4 lg:max-w-[900px] lg:px-3 lg:py-2' : 'mb-2 lg:max-w-[900px] lg:px-2 lg:py-1'}  w-full border border-gray-400  shadow-md`}
+                    className={`search-bar mx-auto flex max-w-[70%]  items-center  justify-center overflow-hidden rounded-full px-2 py-1 transition duration-300 ease-in-out  ${scrolled ? "mb-4 lg:max-w-[900px] lg:px-3 lg:py-2" : "mb-2 lg:max-w-[900px] lg:px-2 lg:py-1"}  w-full border border-gray-400  shadow-md`}
                   >
                     <input
                       type="text"
                       className="w-full border border-gray-300 px-4 py-2"
                       placeholder={
-                        scrolled ? 'ค้นหาบน Pantip' : 'ค้นหาบน Pantip...'
+                        scrolled ? "ค้นหาบน Pantip" : "ค้นหาบน Pantip..."
                       }
                     />
                     <div className="ml-3 rounded-full bg-red-500 p-4">
@@ -310,29 +320,30 @@ const BaseTemplate = (props: {
             />
           </nav>
           <nav
-            className={` bg-white  ${scrolled ? '' : 'border-b'} mx-auto  border-gray-200 py-3`}
+            className={` bg-white  ${scrolled ? "" : "border-b"} mx-auto  border-gray-200 py-3`}
           >
             <div className="mx-auto max-w-[1500px]">
               <div className="">
                 <div className="slider-container">
                   <Slider {...settings}>
-                    {catList?.data.map((item) => {
-                      return (
-                        <div key={item.id} className="p-2 ">
-                          <div className="w-18 h-18 flex cursor-pointer flex-col items-center justify-center rounded-xl border border-gray-500 p-1 shadow-md transition-all duration-300 hover:scale-110">
-                            <div className=" m-auto flex size-12 items-center justify-center rounded-xl">
-                              <IoNewspaperOutline size={25} color="#000" />
-                              {/* <img className='w-full h-full' src="https://picsum.photos/200" alt="" /> */}
-                            </div>
-                            <div className="p-1 ">
-                              <p className="truncate text-center text-xs text-gray-900 ">
-                                {item.name}
-                              </p>
+                    {catList &&
+                      catList.map((item) => {
+                        return (
+                          <div key={item.id} className="p-2 ">
+                            <div className="w-18 h-18 flex cursor-pointer flex-col items-center justify-center rounded-xl border border-gray-500 p-1 shadow-md transition-all duration-300 hover:scale-110">
+                              <div className=" m-auto flex size-12 items-center justify-center rounded-xl">
+                                <IoNewspaperOutline size={25} color="#000" />
+                                {/* <img className='w-full h-full' src="https://picsum.photos/200" alt="" /> */}
+                              </div>
+                              <div className="p-1 ">
+                                <p className="truncate text-center text-xs text-gray-900 ">
+                                  {item.name}
+                                </p>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      );
-                    })}
+                        );
+                      })}
                   </Slider>
                 </div>
               </div>
@@ -471,7 +482,7 @@ const BaseTemplate = (props: {
                   <a className="text-neutral-600 ">ข้อมูลส่วนบุคคล</a>
                 </p>
                 <p className="mb-4">
-                  <a className="text-neutral-600 ">Vue</a>
+                  <a className="text-neutral-600 ">ร้องเรียน</a>
                 </p>
                 <p>
                   <a className="text-neutral-600 ">สิทธิ์การใช้งานของสมาชิก</a>
@@ -492,7 +503,7 @@ const BaseTemplate = (props: {
                   <a className="text-neutral-600 ">จนท.ธุรการบัญชี</a>
                 </p>
                 <p>
-                  <a className="text-neutral-600 ">Help</a>
+                  <a className="text-neutral-600 ">อื่นๆ</a>
                 </p>
               </div>
               {/* <!-- Contact section --> */}
@@ -537,7 +548,7 @@ const BaseTemplate = (props: {
                       clipRule="evenodd"
                     />
                   </svg>
-                  + 01 234 567 88
+                  0987651234
                 </p>
                 <p className="flex items-center justify-center md:justify-start">
                   <svg
@@ -552,7 +563,7 @@ const BaseTemplate = (props: {
                       clipRule="evenodd"
                     />
                   </svg>
-                  + 01 234 567 89
+                  0987651234
                 </p>
               </div>
             </div>

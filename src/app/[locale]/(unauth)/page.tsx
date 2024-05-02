@@ -20,8 +20,44 @@ import Slider from 'react-slick';
 // }
 
 export default function Index() {
-  const [highlight, setHighlight] = useState();
-  const [topic, setTopic] = useState();
+
+type Highlight = {
+  name: string;
+  message: string;
+  weight: number;
+  image_url: string[];
+  post_url: string;
+  };
+  
+  type Topic = {
+    topic_id: number;
+    title: string;
+    topic_type: number;
+    created_time: string;
+    author: {
+      id: number;
+      name: string;
+      avatar: {
+        original: string;
+        large: string;
+        medium: string;
+        small: string;
+      };
+      slug: string;
+    };
+    thumbnail_url: string;
+    views_count: number;
+    comments_count: number;
+    votes_count: number;
+    tags: {
+      name: string;
+      slug: string;
+    }[];
+  };
+
+
+  const [highlight, setHighlight] = useState<Highlight[]>([]);
+  const [topic, setTopic] = useState<Topic[]>([]);
 
   const settings = {
     dots: true,
@@ -102,8 +138,9 @@ export default function Index() {
       if (res.status !== 200) {
         throw new Error(data.message);
       }
-      setHighlight(data);
-      console.log(data);
+      setHighlight(data.data);
+      console.log("highlight")
+      console.log(data.data);
     } catch (error) {
       console.log(error);
     }
@@ -142,9 +179,9 @@ export default function Index() {
       if (res.status !== 200) {
         throw new Error(data.message);
       }
-      setTopic(data);
+      setTopic(data.data);
       console.log('topic');
-      console.log(data);
+      console.log(data.data);
     } catch (error) {
       console.log(error);
     }
@@ -159,7 +196,7 @@ export default function Index() {
           <div className="slider mx-auto">
             <Slider {...settings}>
               {highlight &&
-                highlight.data.map((item, index) => {
+                highlight.map((item, index) => {
                   return (
                     <div className="px-2" key={index}>
                       <div className="p-2 ">
@@ -189,7 +226,7 @@ export default function Index() {
           </div>
           <div className="grid grid-cols-1 gap-4 p-10 sm:grid-cols-2 md:px-20 lg:grid-cols-5">
             {topic &&
-              topic.data.map((item) => {
+              topic.map((item) => {
                 return (
                   <div
                     key={item.topic_id}
